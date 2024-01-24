@@ -83,7 +83,15 @@
         </form>
       </main> -->
 
-      <main class="form-signin w-25 m-auto">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your existing head content -->
+</head>
+<body>
+    <!-- Your existing body content -->
+
+    <main class="form-signin w-25 m-auto">
         <form class="form_content" onsubmit="return validateForm()">
        
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -110,26 +118,38 @@
 
     <script>
         function validateForm() {
-            var email = document.getElementById('floatingInput').value;
-            var password = document.getElementById('floatingPassword').value;
+    var email = document.getElementById('floatingInput').value;
+    var password = document.getElementById('floatingPassword').value;
 
-            if (email.trim() === "") {
-                alert("Email address must be filled out");
-                return false;
-            }
+    // Email validation
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.trim() === "") {
+        alert("Email address must be filled out");
+        return false;
+    } else if (!emailRegex.test(email)) {
+        alert("Invalid email address");
+        return false;
+    } else if(!email.includes("@gmail.com")) {
+      alert("Invalid email");
+      return false;
+    }
 
-            // You can add more specific email validation if needed
+    // Password validation
+    if (password.trim() === "") {
+        alert("Password must be filled out");
+        return false;
+    } else if (password.length < 8) {
+        alert("Password must be at least 8 characters long");
+        return false;
+    }
 
-            if (password.trim() === "") {
-                alert("Password must be filled out");
-                return false;
-            }
-
-            // You can add more password validation if needed
-
-            return true;
-        }
+    return true;
+}
     </script>
+
+</body>
+</html>
+
 
 
 </body>
